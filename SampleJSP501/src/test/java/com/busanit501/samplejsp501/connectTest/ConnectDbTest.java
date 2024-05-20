@@ -41,25 +41,25 @@ public class ConnectDbTest {
         conn.close();
     }
 
-    @Test
-    public void test2() {
-        //원래 우리가 인스턴스 생성 방법
-        //TodoVO Todo = new TodoVO();
-        TodoVO todoVO = new TodoVO();
-        todoVO.setTno(200L);
-        todoVO.setTitle("제목200");
-        todoVO.setDueDate(LocalDate.now());
-
-        System.out.println(todoVO);
-
-        TodoVO todo = TodoVO.builder()
-                .tno(100L)
-                .title("제목100")
-                .dueDate(LocalDate.now())
-                .build();
-
-        System.out.println(todo);
-    }
+//    @Test
+//    public void test2() {
+//        //원래 우리가 인스턴스 생성 방법
+//        //TodoVO Todo = new TodoVO();
+//        TodoVO todoVO = new TodoVO();
+//        todoVO.setTno(200L);
+//        todoVO.setTitle("제목200");
+//        todoVO.setDueDate(LocalDate.now());
+//
+//        System.out.println(todoVO);
+//
+//        TodoVO todo = TodoVO.builder()
+//                .tno(100L)
+//                .title("제목100")
+//                .dueDate(LocalDate.now())
+//                .build();
+//
+//        System.out.println(todo);
+//    }
 
     @Test
     public void test() {

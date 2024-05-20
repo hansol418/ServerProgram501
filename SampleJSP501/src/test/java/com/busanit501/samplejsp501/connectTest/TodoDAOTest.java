@@ -5,6 +5,7 @@ import com.busanit501.samplejsp501.todo.domain.TodoVO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class TodoDAOTest {
@@ -41,6 +42,41 @@ public class TodoDAOTest {
         samples.forEach(vo ->System.out.println("각각 출력해보기 : " + vo) );
     }
 
+
+    @Test
+    public void getSelectOne() throws Exception {
+        TodoVO todoVO = todoDAO.selectOne(5L);
+        // 기본 출력이고, 전체 출력
+        System.out.println("todoVO : " + todoVO);
+
+    }
+
+    //insert
+    @Test
+    public void insert() throws Exception {
+        // 기능 확인을 위해, 임시 더미 데이터 필요.
+        // 글쓰기 재료가 필요, 임시로 담을 모델도 생성하고, 기능에 전달.
+//    TodoVO todoVO = new TodoVO();
+        TodoVO todoVO1 = TodoVO.builder()
+                .title("오늘 점심 뭐 먹지?")
+//        .dueDate(LocalDate.now())
+                .dueDate(LocalDate.of(2024,5,20))
+                .finished(false)
+                .build();
+
+        // DAO에서 만들었던, insert 기능 사용하기.
+        todoDAO.insert(todoVO1);
+
+    }
+
+    //update
+
+    //delete
+    @Test
+    public void delete() throws Exception {
+        // 기능 확인 해보기.
+        todoDAO.delete(1L);
+    }
 
 
 }
