@@ -1,48 +1,27 @@
 package com.busanit501.samplejsp501.menu.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
+// 기존에 롬복 사용전 -> 사용후 변경.
+// 인스턴스 생성시 모양이 빌더 패턴 모양
+@Builder
+// set/get/toString/equals/hashCode 등 다 포함됨.
+@Data
+// 인자값이 없는 생성자, 기본생성자
+@NoArgsConstructor
+// 모든 인자값을 가지는 생성자.
+@AllArgsConstructor
 public class MenuDTO {
     // 인스턴스 멤버.
     private Long menuNo;
     private String menuTitle;
-    private LocalDate dueDate;
-
-    public Long getMenuNo() {
-        return menuNo;
-    }
-
-    public void setMenuNo(Long menuNo) {
-        this.menuNo = menuNo;
-    }
-
-    public String getMenuTitle() {
-        return menuTitle;
-    }
-
-    public void setMenuTitle(String menuTitle) {
-        this.menuTitle = menuTitle;
-    }
-
-    public LocalDate getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    // MenuDTO menuDTO = new MenuDTO();
-    // System.out.println("MenuDTO : " + menuDTO);
-    // 해당 인스턴스를 출력시, 밑에 toString 메서드가 동작 합니다.
-    @Override
-    public String toString() {
-        return "MenuDTO{" +
-                "menuNo=" + menuNo +
-                ", menuTitle='" + menuTitle + '\'' +
-                ", dueDate=" + dueDate +
-                '}';
-    }
+    private LocalDate menuRegDate;
+    
 }
 
 

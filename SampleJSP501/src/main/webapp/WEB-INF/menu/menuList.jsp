@@ -13,7 +13,7 @@
 
 <h1>JSTL 이용해서 반복문 출력해보기1.단순 반복문</h1>
 <ul>
-    <c:forEach var="dto" items="${list}">
+    <c:forEach items="${list1}" var="dto" >
         <li>
                 ${dto}
         </li>

@@ -3,7 +3,6 @@ package com.busanit501.samplejsp501.member;
 import com.busanit501.samplejsp501.member.dto.MemberDTO;
 import com.busanit501.samplejsp501.member.service.MemberService;
 import com.busanit501.samplejsp501.menu.dto.MenuDTO;
-import com.busanit501.samplejsp501.menu.service.MenuService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

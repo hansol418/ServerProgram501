@@ -5,10 +5,9 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Getter
-@Setter
-@ToString
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class MenuVO {
     // 인스턴스 멤버.
     private Long menuNo;

@@ -1,6 +1,5 @@
 package com.busanit501.samplejsp501.connectTest.service;
 
-import com.busanit501.samplejsp501.todo.dto.TodoDTO;
 import com.busanit501.samplejsp501.todo.service.TodoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -1,9 +1,6 @@
 package com.busanit501.samplejsp501.todo.service;
 
-import com.busanit501.samplejsp501.todo.dao.TodoDAO;
 import com.busanit501.samplejsp501.todo.dto.TodoDTO;
-import com.busanit501.samplejsp501.todo.util.MapperUtil;
-import org.modelmapper.ModelMapper;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

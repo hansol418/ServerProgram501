@@ -20,7 +20,7 @@ public enum ConnectionMenuUtil {
         HikariConfig config = new HikariConfig();
         // 마리아 디비 도구 위치 (폴더=패키지)
         config.setDriverClassName("org.mariadb.jdbc.Driver");
-        config.setJdbcUrl("jdbc:mariadb://localhost:3307/webdb");
+        config.setJdbcUrl("jdbc:mariadb://localhost:3306/webdb");
         config.setUsername("webuser");
         config.setPassword("webuser");
         //
