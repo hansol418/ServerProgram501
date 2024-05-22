@@ -7,15 +7,19 @@
     <title>JSP-Model2(MVC)-MenuList</title>
 </head>
 <body>
-
-<h1><%= "임시 MenuList 화면. 임시 메인" %>
-</h1>
-
-<h1>JSTL 이용해서 반복문 출력해보기1.단순 반복문</h1>
+<button><a href="/menu/register">메뉴작성</a></button>
 <ul>
-    <c:forEach items="${list1}" var="dto" >
+    <c:forEach var="dto" items="${list}">
         <li>
-                ${dto}
+    <span>
+    <a href="/menu/read?menuNo=${dto.menuNo}">${dto.menuNo}</a>
+    </span>
+            <span>
+                    ${dto.menuTitle}
+            </span>
+            <span>
+                    ${dto.menuRegDate}
+            </span>
         </li>
     </c:forEach>
 </ul>

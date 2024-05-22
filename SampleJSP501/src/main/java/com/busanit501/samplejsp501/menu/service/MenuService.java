@@ -7,11 +7,8 @@ import com.busanit501.samplejsp501.todo.util.MapperUtil;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Log4j2
 public enum MenuService {
@@ -67,10 +64,30 @@ public enum MenuService {
     }
 
     // 하나 조회
+    public MenuDTO getSelectOne(Long menuNo) throws Exception {
+        MenuVO sample = menuDAO.selectOne(menuNo);
+//    log.info("TodoService , 확인1, sample : " + sample);
+        MenuDTO menuDTO = modelMapper.map(sample, MenuDTO.class);
+        return menuDTO;
+    }
+
 
     // 수정
+    // 화면에서 데이터를 넘겨받아서, DTO 담아서, 여기에 왔음.
+    // todoDTO 변경할 데이터가 담겨져 있다.
+    public void updateMenu(MenuDTO menuDTO) throws Exception {
+        MenuVO menuVO = modelMapper.map(menuDTO, MenuVO.class);
+
+
+        // 실제 디비에도 수정.
+        menuDAO.update(menuVO);
+    }
 
     // 삭제
+    public void deleteMenu(Long menuNo) throws Exception {
+        menuDAO.delete(menuNo);
+    }
+
 
 
 }

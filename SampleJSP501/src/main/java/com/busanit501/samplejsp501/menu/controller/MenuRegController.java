@@ -3,6 +3,7 @@ package com.busanit501.samplejsp501.menu.controller;
 import com.busanit501.samplejsp501.menu.dto.MenuDTO;
 import com.busanit501.samplejsp501.menu.service.MenuService;
 import com.busanit501.samplejsp501.todo.service.TodoService;
+import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDate;
 
+@Log4j2
 @WebServlet(name = "menuReg", urlPatterns = "/menu/register")
 public class MenuRegController extends HttpServlet {
 
@@ -21,6 +24,7 @@ public class MenuRegController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         //todo 글 입력 폼
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/menu/menuReg.jsp");
         requestDispatcher.forward(req, resp);

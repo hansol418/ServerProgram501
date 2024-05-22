@@ -12,7 +12,7 @@
 </h1>
 <form method="post" action="/menu/register">
     <div>
-        <input type="text" name="menuTitle" placeholder="제목을 입력해주세요.">
+        <input type="text" name="menuTitle" placeholder="메뉴를 입력해주세요.">
     </div>
     <div>
         <input type="date" name="menuRegDate">
