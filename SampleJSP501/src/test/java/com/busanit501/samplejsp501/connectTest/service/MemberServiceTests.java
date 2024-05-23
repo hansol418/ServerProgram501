@@ -1,4 +1,4 @@
-package com.busanit501.samplejsp501.connectTest.service;
+package com.busanit501.samplejsp501.service;
 
 import com.busanit501.samplejsp501.todo.dto.MemberDTO;
 import com.busanit501.samplejsp501.todo.service.MemberService;
@@ -29,6 +29,25 @@ public class MemberServiceTests {
   public  void updateUUID() throws Exception {
     memberService.updateUUID("lsy","testuuid3333333333333333333333333");
     // 디비 콘솔에서 확인하기.
+  }
+
+  @Test
+  public  void selectUUID() throws Exception {
+    MemberDTO memberDTO = memberService.selectUUID("d508307d-2f79-4f48-91f7-8a52568e8fbe");
+    log.info("memberDTO : " + memberDTO);
+    // 디비 콘솔에서 확인하기.
+  }
+
+  @Test
+  public  void insertMember() throws Exception {
+    MemberDTO memberDTO = MemberDTO.builder()
+            .mid("lsy05232")
+            .mpw("1234")
+            .mname("이상용05232")
+            .build();
+
+    memberService.insertMember(memberDTO);
+// 디비 콘솔에서 확인하기.
   }
 }
 

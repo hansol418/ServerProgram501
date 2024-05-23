@@ -1,7 +1,8 @@
 package com.busanit501.samplejsp501.login;
 
-import com.busanit501.samplejsp501.todo.dto.MemberDTO;
-import com.busanit501.samplejsp501.todo.service.MemberService;
+import com.busanit501.samplejsp501.lunchmember.dto.LunchMemberDTO;
+import com.busanit501.samplejsp501.lunchmember.service.LunchMemberService;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,14 +11,14 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.UUID;
 
-@WebServlet(name = "loginController", urlPatterns = "/login")
-public class LoginController extends HttpServlet {
+@WebServlet(name = "LMLoginController", urlPatterns = "/LMLogin")
+public class LMLoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // 로그인 입력폼으로 전달.
         System.out.println("get 으로 login 처리");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/login/login.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/login/LMLogin.jsp");
         requestDispatcher.forward(req, resp);
     }
 
@@ -39,7 +40,7 @@ public class LoginController extends HttpServlet {
         try {
             // mid, mpw, 해당 유저가 있다면, 회원 정보 가져오기, Todo 상세보기와 같음.
             // 아직, uuid 가 없음.
-            MemberDTO memberDTO = MemberService.INSTANCE.getOneMember(mid, mpw);
+            LunchMemberDTO lunchmemberDTO = LunchMemberService.INSTANCE.getOneMember(mid, mpw);
 
             // 자동로그인 여부가 체크가 되었다면.
             if (rememberMe) {
@@ -47,9 +48,9 @@ public class LoginController extends HttpServlet {
                 String uuid = UUID.randomUUID().toString();
                 // 랜덤한 문자열을 , 위에서 받아온 정보에, uuid 업데이트하기. memberDTO
                 // 디비에 데이터를 업데이트 하는 부분,
-                MemberService.INSTANCE.updateUUID(mid, uuid);
+                LunchMemberService.INSTANCE.updateUUID(mid, uuid);
                 // 임시 모델에, 같은 uuid 담는 코드.
-                memberDTO.setUuid(uuid);
+                lunchmemberDTO.setUuid(uuid);
 
                 //쿠키에 , 생성 uuid 랜덤 문자열 넣기.
                 // 쿠키에 uuid 담기.
@@ -67,19 +68,19 @@ public class LoginController extends HttpServlet {
                 HttpSession session = req.getSession();
                 //세션의 정보를 저장.
                 // memberDTO 여기에 어떤 정보가 있나요? mid, mpw, mname, uuid(방금추가됨)
-                session.setAttribute("loginInfo", memberDTO);
-                resp.sendRedirect("/todo/list");
+                session.setAttribute("loginInfo", lunchmemberDTO);
+                resp.sendRedirect("/menu/list");
             } else {
                 // 자동로그인 체크를 안했을 경우. 로직.
                 HttpSession session = req.getSession();
                 //세션의 정보를 저장.
                 // memberDTO 여기에 어떤 정보가 있나요? mid, mpw, mname, uuid(없음.)
-                session.setAttribute("loginInfo", memberDTO);
-                resp.sendRedirect("/todo/list");
+                session.setAttribute("loginInfo", lunchmemberDTO);
+                resp.sendRedirect("/menu/list");
             }
 
         } catch (Exception e) {
-            resp.sendRedirect("/login?result=error");
+            resp.sendRedirect("/LMLogin?result=error");
         }
 
     }// doPost 닫는 부분

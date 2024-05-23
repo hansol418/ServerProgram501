@@ -23,6 +23,37 @@ public class MemberDAOTest {
         log.info("memberVO : " + memberVO);
 
     }
+
+    @Test
+    public void insertMember() throws Exception {
+        MemberVO memberVO = MemberVO.builder()
+                .mid("lsy0523")
+                .mpw("1234")
+                .mname("이상용0523")
+                .build();
+        memberDAO.insertMember(memberVO);
+        // 디비 콘솔에서 확인하기.
+
+    }
+
+    @Test
+    public void updateUUID() throws Exception {
+        memberDAO.updateUUID("lsy","testuuid22222222222");
+        // 기본 출력이고, 전체 출력
+//    System.out.println("memberVO : " + memberVO);
+        // 디비 콘솔에서 확인해보기.
+
+    }
+
+    @Test
+    public void selectUUID() throws Exception {
+        MemberVO memberVO = memberDAO.selectUUID("d508307d-2f79-4f48-91f7-8a52568e8fbe");
+        // 기본 출력이고, 전체 출력
+//    System.out.println("memberVO : " + memberVO);
+        log.info("memberVO : " + memberVO);
+        // 디비 콘솔에서 확인해보기.
+
+    }
 }
 
 

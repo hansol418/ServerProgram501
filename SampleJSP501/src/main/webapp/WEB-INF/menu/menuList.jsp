@@ -7,6 +7,16 @@
     <title>JSP-Model2(MVC)-MenuList</title>
 </head>
 <body>
+<div>
+    <form method="post" action="/LMLogout">
+        <button type="submit">로그아웃</button>
+    </form>
+</div>
+<div>
+    <form method="post" action="/LMNoauto">
+        <button type="submit">자동로그인해제</button>
+    </form>
+</div>
 <button><a href="/menu/register">메뉴작성</a></button>
 <ul>
     <c:forEach var="dto" items="${list}">
