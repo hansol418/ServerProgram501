@@ -1,5 +1,7 @@
 package com.busanit501.samplejsp501.filter;
 
+import com.busanit501.samplejsp501.lunchmember.dto.LunchMemberDTO;
+import com.busanit501.samplejsp501.lunchmember.service.LunchMemberService;
 import com.busanit501.samplejsp501.todo.dto.MemberDTO;
 import com.busanit501.samplejsp501.todo.service.MemberService;
 import lombok.extern.log4j.Log4j2;
@@ -49,7 +51,7 @@ public class LoginFilter implements Filter {
 
         // 세션에도 없고, 쿠키도 없다면, 그냥 로그인
         if (cookie == null) {
-            resp.sendRedirect("/login");
+            resp.sendRedirect("/LMLogin");
             return;
         }
 
@@ -58,17 +60,17 @@ public class LoginFilter implements Filter {
 
         try {
             // uuid 를 이용해서, 한명의 회원을 조회가능.
-            MemberDTO memberDTO = MemberService.INSTANCE.selectUUID(uuid);
+            LunchMemberDTO lunchmemberDTO = LunchMemberService.INSTANCE.selectUUID(uuid);
 
             // memberDTO, 회원이 없다면,
-            if(memberDTO == null) {
+            if(lunchmemberDTO == null) {
                 // 강제로 예외 발생시키키
                 throw new Exception("쿠키 값에 해당하는 유저가 없다.");
             }
 
             // memberDTO, 회원이 있다면,
             // 세션에 저장하기.
-            session.setAttribute("loginInfo", memberDTO);
+            session.setAttribute("loginInfo", lunchmemberDTO);
             //
             filterChain.doFilter(servletRequest, servletResponse);
 
